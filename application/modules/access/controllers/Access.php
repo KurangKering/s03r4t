@@ -30,11 +30,17 @@ class Access extends CI_Controller {
 	}
 	public function tambah_user()
 	{
+
+		$data['groups'] = $this->ion_auth->groups()->result();
+
 		$this->template->stylesheet->add(base_url('template/gentelella/').'vendors/iCheck/skins/flat/green.css');
-		//$this->template->javascript->add(base_url('template/gentelella/').'vendors/iCheck/icheck.min.js');
+		$this->template->stylesheet->add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.css');
+		$this->template->javascript->add(base_url('template/gentelella/').'vendors/iCheck/icheck.min.js');
+		$this->template->javascript->add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.js');
+		$this->template->javascript->add(base_url('template/gentelella/').'vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js');
 		$this->template->javascript->add(base_url('template/gentelella/').'vendors/validator/validator.js');
 
-		$this->template->content->view('vw_tambah_user');
+		$this->template->content->view('vw_tambah_user', $data);
 		$this->template->publish();
 	}
 
