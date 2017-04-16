@@ -7,6 +7,7 @@ class Errors extends CI_Controller {
 	{
 		parent::__construct();
 		//Do your magic here
+		
 	}
 	public function show_404()
 	{

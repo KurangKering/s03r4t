@@ -1,4 +1,3 @@
-<?php var_dump($groups); ?>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
@@ -23,55 +22,55 @@
                   </div>
                   <div class="x_content">
                     <br>
-                    <form class="form-horizontal form-label-left" novalidate="">
+                    <form class="form-horizontal form-label-left" novalidate="" method="post">
 
-                     
+
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="first_name" class="form-control col-md-7 col-xs-12" name="first_name" value="a@a.com" required="required" type="text">
+                          <input id="first_name" class="form-control col-md-7 col-xs-12" name="first_name" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last_name">Last Name
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="last_name" class="form-control col-md-7 col-xs-12" name="last_name" value="a@a.com" required="required" type="text">
+                          <input id="last_name" class="form-control col-md-7 col-xs-12" name="last_name" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="email" name="email" value="a@a.com" required="required" class="form-control col-md-7 col-xs-12" type="email">
+                          <input id="email" name="email" required="required" class="form-control col-md-7 col-xs-12" type="email">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Username
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="username" class="form-control col-md-7 col-xs-12" name="username" value="a@a.com" required="required" type="text">
+                          <input id="username" class="form-control col-md-7 col-xs-12" name="username" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label for="password" class="control-label col-md-3">Password</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="password" name="password"  class="form-control col-md-7 col-xs-12" value="a@a.com" required="required" type="password">
+                          <input id="password" name="password"  class="form-control col-md-7 col-xs-12" required="required" type="password">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Repeat Password</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="password2" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" value="a@a.com" required="required" type="password">
+                          <input id="password2" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required" type="password">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Telephone
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="telephone" name="phone" value="00000" required="required"  class="form-control col-md-7 col-xs-12" type="tel">
+                          <input id="telephone" name="phone" required="required"  class="form-control col-md-7 col-xs-12" type="tel">
                         </div>
                       </div>
 
@@ -79,76 +78,92 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">User Expired
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="expired" data-inputmask="'mask': '99/99/9999'" value="01/01/2017" name="expired" required="required"  class="form-control col-md-7 col-xs-12" type="date">
+                          <input id="expired" data-inputmask="'mask': '99/99/9999'" name="expired" required="required"  class="form-control col-md-7 col-xs-12" type="date">
                         </div>
                       </div>
 
-                      <div class="item form-group">
+                      <!-- <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="col-md-1 col-sm-1 col-xs-12">
                           <div class="">
                             <label>
                               <input name="status" type="checkbox" class="js-switch" checked />
                             </label>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Enable Change Password</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="">
-                            <label>
-                              <input name="en_change_pass" type="checkbox" class="js-switch" checked /> 
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Password Expired Remainder</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="">
-                            <label>
-                              <input name="en_expired_remainder" type="checkbox" class="js-switch" checked /> 
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Allow Concurrent Login</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="col-md-1 col-sm-1 col-xs-12">
                           <div class="">
                             <label>
                               <input name="en_concurrent_login" type="checkbox" class="js-switch" checked /> 
                             </label>
                           </div>
                         </div>
+
+
+                        
                       </div>
 
+                      <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Enable Change Password</label>
+                        <div class="col-md-1 col-sm-1 col-xs-12">
+                          <div class="">
+                            <label>
+                              <input name="en_change_pass" type="checkbox" class="js-switch" checked /> 
+                            </label>
+                          </div>
+                        </div>
 
 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Password Expired Remainder</label>
+                        <div class="col-md-1 col-sm-1 col-xs-12">
+                          <div class="">
+                            <label>
+                              <input name="en_expired_remainder" type="checkbox" class="js-switch" checked /> 
+                            </label>
+                          </div>
+                        </div>
+
+                      </div> -->
                       <div class="form-group">
                         <label class="col-md-3 col-sm-3 col-xs-12 control-label">Groups
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="">
-                            <label>
-                              <input name="" type="checkbox" class="flat" > Administrator
-                            </label>
+                          <div class="col-md-7">
+                            <?php foreach (array_slice($groups, 0, count($groups)/2) as $key => $value): ?>
+
+                              <div class="">
+                                <label>
+                                  <input name="groups[]" type="checkbox" class="flat" value="<?php echo $value->id; ?>"> <?php echo $value->name; ?>
+                                </label>
+                              </div>
+                            <?php endforeach ?>
                           </div>
-                          <div class="">
+                          <div class="col-md-5">
+                            <?php foreach (array_slice($groups, count($groups)/2, count($groups)) as $key => $value): ?>
+
+                              <div class="">
+                                <label>
+                                  <input name="groups[]" type="checkbox" class="flat" value="<?php echo $value->id; ?>"> <?php echo $value->name; ?>
+                                </label>
+                              </div>
+                            <?php endforeach ?>
+                          </div>
+
+
+                          <!-- <div class="">
                             <label>
                               <input type="checkbox" class="flat" > Panitera Muda
                             </label>
-                          </div>
+                          </div> -->
                         </div>
                       </div>  
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button type="button" onclick="location.href ='<?php echo base_url('access'); ?>'" class="btn btn-primary">Cancel</button>
                           <button class="btn btn-primary" type="reset">Reset</button>
                           <button id="send" type="submit" class="btn btn-success">Submit</button>
                         </div>

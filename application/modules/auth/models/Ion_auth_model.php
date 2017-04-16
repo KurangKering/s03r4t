@@ -879,6 +879,7 @@ class Ion_auth_model extends CI_Model
 	{
 		$this->trigger_events('pre_register');
 
+		if (!isset($additional_data['active'])) //add this line to check wether active is set or no
 		$manual_activation = $this->config->item('manual_activation', 'ion_auth');
 
 		if ($this->identity_check($identity))
@@ -916,7 +917,7 @@ class Ion_auth_model extends CI_Model
 		    'email'      => $email,
 		    'ip_address' => $ip_address,
 		    'created_on' => time(),
-		    'active'     => ($manual_activation === false ? 1 : 0)
+		   // 'active'     => ($manual_activation === false ? 1 : 0) // commented this line 
 		);
 
 		if ($this->store_salt)
