@@ -22,7 +22,7 @@
               </div>
               <div class="x_content">
               	<br>
-              	<form class="form-horizontal form-label-left" novalidate="" method="post">
+              	<form class="form-horizontal form-label-left" novalidate="" method="post" enctype="multipart/form-data>
               		<div class="item form-group">
               			<label class="control-label col-md-3 col-sm-3 col-xs-12" for="no_lembar_disposisi">No. Lembar Disposisi
               			</label>
