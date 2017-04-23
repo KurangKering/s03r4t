@@ -4,7 +4,7 @@
       <div class="x_title">
         <h2>Daftar Surat Masuk</h2>
         <ul class="nav navbar-right panel_toolbox">
-          <li class=""><button  onclick="location.href = '<?php echo base_url('access/tambah_user') ?>';" class="btn btn-primary">Tambah</button>
+          <li class=""><button  onclick="location.href = '<?php echo base_url('surat_masuk/tambah') ?>';" class="btn btn-primary">Tambah</button>
             <!-- <a href="<?php echo base_url('access/tambah_user') ?>" class=""><i class="glyphicon glyphicon-plus"></i></a></li> -->
             <li>
               <div class="input-group top_search">
@@ -13,11 +13,9 @@
             </li>
         <!--   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
       </li> -->
-
           <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
             <ul class="dropdown-menu" role="menu">
-
               <li><a href="<?php  ?>">Settings 1</a>
               </li>
               <li><a href="#">Settings 2</a>
@@ -31,46 +29,44 @@
       </div>
       <div class="x_content">
         <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
-       </div>
-     </div>
-   </div>
- </div>
-
-
-
- <div class="modal fade bs-example-modal-sm" id="myModals" tabindex="-1" role="dialog" aria-hidden="true">
+          <thead>
+            <tr>
+              <th>No. Diposisi</th>
+              <th>Tanggal Masuk</th>
+              <th>Sifat</th>
+              <th>Pengirim</th>
+              <th>Penerima</th>
+              <th>Perihal</th>
+              <th>Tujuan Disposisi</th>
+              <th>File</th>
+              <th>Status</th>
+              <th>Edit | Hapus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($surat_masuk as $key => $value): ?>
+              <tr>
+                <td><?php echo $value['no_lembar_disposisi'] ?></td>
+                <td><?php echo $value['tgl_masuk'] ?></td>
+                <td><?php echo $value['tujuan_id'] ?></td>
+                <td><?php echo $value['pengirim'] ?></td>
+                <td><?php echo $value['tujuan_text'] ?></td>
+                <td><?php echo $value['perihal'] ?></td>
+                <td><?php echo $value['disposisi_tujuan_id'] ?></td>
+                <td><?php echo $value['file'] ?></td>
+                <td><?php echo $value['disposisi_terakhir_text'] ?></td>
+                <td>Edit | Hapus</td>
+              </tr>
+            <?php endforeach ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade bs-example-modal-sm" id="myModals" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
         </button>
@@ -88,13 +84,23 @@
             <ul id="groups">
             </ul>
           </div>
-          
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-
     </div>
   </div>
 </div>
+
+<script>
+  $(function() {
+    new PNotify({
+      title: 'Regular Success',
+      text: 'That thing that you were trying to do worked!',
+      type: 'success',
+      styling: 'bootstrap3'
+    });
+  });
+  
+</script>

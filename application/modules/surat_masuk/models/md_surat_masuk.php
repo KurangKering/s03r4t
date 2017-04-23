@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Md_surat_masuk extends CI_Model {
+class Md_Surat_masuk extends CI_Model {
 
 
 
@@ -11,9 +11,15 @@ class Md_surat_masuk extends CI_Model {
 		//Do your magic here
 	}	
 
-	public function tambah_surat_masuk($data)
+	public function select_disposisi_tujuan()
 	{
-		
+		$sql = 'SELECT * FROM ref_eselon WHERE kode = "ESELON IV" ';
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0 ) {
+			return $result->result_array();
+			# code...
+		}
+		return array();
 	}
 
 }

@@ -27,6 +27,22 @@ $full_name = $this->ion_auth->user()->row()->first_name;
   <link href="<?php echo base_url('template/gentelella/') ?>build/css/custom.min.css" rel="stylesheet">
   <?php echo $this->template->stylesheet; ?>
 
+
+
+<!-- jQuery -->
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/nprogress/nprogress.js"></script>
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/iCheck/icheck.min.js"></script>
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/switchery/dist/switchery.min.js"></script>
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+<script src="<?php echo base_url('template/gentelella/') ?>vendors/validator/validator.js"></script>
+<?php echo $this->template->javascript; ?>
+
 </head>
 
 <body class="nav-md">
@@ -258,21 +274,8 @@ $full_name = $this->ion_auth->user()->row()->first_name;
   </div>
 </div>
 
-<!-- jQuery -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/nprogress/nprogress.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/switchery/dist/switchery.min.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/validator/validator.js"></script>
-<?php echo $this->template->javascript; ?>
 <!-- Custom Theme Scripts -->
-<script src="<?php echo base_url('template/gentelella/') ?>build/js/custom.min.js"></script>
+<script src="<?php echo base_url('template/gentelella/') ?>build/js/custom.js"></script>
 
 
 </body>
