@@ -10,7 +10,6 @@ $full_name = $this->ion_auth->user()->row()->first_name;
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php echo $this->template->meta; ?>
 
   <title>Sistem Informasi Surat Menyurat</title>
 
@@ -25,7 +24,7 @@ $full_name = $this->ion_auth->user()->row()->first_name;
 
   <!-- Custom Theme Style -->
   <link href="<?php echo base_url('template/gentelella/') ?>build/css/custom.min.css" rel="stylesheet">
-  <?php echo $this->template->stylesheet; ?>
+  <?php echo $css; ?>
 
 
 
@@ -41,7 +40,7 @@ $full_name = $this->ion_auth->user()->row()->first_name;
 <script src="<?php echo base_url('template/gentelella/') ?>vendors/switchery/dist/switchery.min.js"></script>
 <script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 <script src="<?php echo base_url('template/gentelella/') ?>vendors/validator/validator.js"></script>
-<?php echo $this->template->javascript; ?>
+<?php echo $js; ?>
 
 </head>
 
@@ -87,7 +86,7 @@ $full_name = $this->ion_auth->user()->row()->first_name;
                 <li><a><i class="fa fa-home"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo base_url('surat_masuk/tambah') ?>">Tambah Surat Masuk</a></li>
-                    <li><a href="<?php echo base_url('surat_masuk/data_surat_masuk') ?>">Data Surat Masuk</a></li>
+                    <li><a href="<?php echo base_url('surat_masuk/lihat') ?>">Data Surat Masuk</a></li>
                     <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Cari Surat Masuk</a></li>
                     
                   </ul>
@@ -257,7 +256,7 @@ $full_name = $this->ion_auth->user()->row()->first_name;
     <!-- page content -->
     <div class="right_col" role="main">
       <div class="">
-        <?php echo $this->template->content; ?>
+        <?php echo $content; ?>
 
       </div>
     </div>

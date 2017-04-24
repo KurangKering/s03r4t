@@ -15,8 +15,8 @@ class Dashboard extends CI_Controller {
 
 		$this->data['user'] = $this->ion_auth->user()->row()->first_name;
 		$this->data['group'] = $this->ion_auth->get_users_groups()->row()->name;
-		$this->template->content->view('vw_dashboard', $this->data);
-		$this->template->publish();
+		$this->template->render('vw_dashboard', $this->data);
+		
 	}
 
 }

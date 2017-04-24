@@ -9,13 +9,13 @@ class Surat_masuk extends CI_Controller {
 		$this->load->model('md_Global');
 		$this->load->model('md_Surat_masuk');
 
-		$this->template->stylesheet->add(base_url('template/gentelella'). '/vendors/pnotify/dist/pnotify.css');
-		$this->template->stylesheet->add(base_url('template/gentelella'). '/vendors/pnotify/dist/pnotify.buttons.css');
-		$this->template->stylesheet->add(base_url('template/gentelella'). '/vendors/pnotify/dist/pnotify.nonblock.css');
+		$this->template->css_add('template/gentelella/vendors/pnotify/dist/pnotify.css');
+		$this->template->css_add('template/gentelella/vendors/pnotify/dist/pnotify.buttons.css');
+		$this->template->css_add('template/gentelella/vendors/pnotify/dist/pnotify.nonblock.css');
 
-		$this->template->javascript->add(base_url('template/gentelella'). '/vendors/pnotify/dist/pnotify.js');
-		$this->template->javascript->add(base_url('template/gentelella'). '/vendors/pnotify/dist/pnotify.buttons.js');
-		$this->template->javascript->add(base_url('template/gentelella'). '/vendors/pnotify/dist/pnotify.nonblock.js');
+		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.js');
+		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.buttons.js');
+		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.nonblock.js');
 	}
 
 	public function index()
@@ -23,6 +23,17 @@ class Surat_masuk extends CI_Controller {
 		
 	}
 
+	public function lihat()
+	{
+		$data['surat_masuk'] = $this->md_Surat_masuk->select_surat_masuk();
+		$this->template->render('vw_data_surat_masuk', $data);
+
+	}
+
+	/**
+	 * [tambah description]
+	 * @return [type] [description]
+	 */
 	public function tambah()
 	{
 		$this->form_validation->set_rules(
@@ -50,7 +61,7 @@ class Surat_masuk extends CI_Controller {
 				'tgl_masuk'           => date_converter($this->input->post('tanggal_masuk')),
 				'tujuan_id'           => $this->input->post('tujuan_id'),
 				'pengirim'            => $this->input->post('pengirim'),
-				'tujuan_text'            => $this->input->post('penerima'),
+				'tujuan_text'         => $this->input->post('penerima'),
 				'perihal'             => $this->input->post('perihal'),
 				'disposisi_tujuan_id' => $this->input->post('disposisi_tujuan_id'),
 				'file'                => $file_path,
@@ -71,12 +82,25 @@ class Surat_masuk extends CI_Controller {
 
 			$data['message'] = (validation_errors() ? validation_errors() : $this->session->flashdata('message'));
 			$data['disposisi_tujuan'] = $this->md_Surat_masuk->select_disposisi_tujuan();
-			$this->template->content->view('vw_tambah_surat_masuk', $data);
-			$this->template->publish();
+			$this->template->render('vw_tambah_surat_masuk', $data);
+			
 		}
 		
 	}
 
+	public function ubah($id = null)
+	{
+		if ($id == null) {
+			show_404();
+		}
+	}
+
+	public function hapus($id = null)
+	{
+		if ($id == null) {
+			# code...
+		}show_404();
+	}
   /*
      * file value and type check during validation
      */
@@ -95,12 +119,7 @@ class Surat_masuk extends CI_Controller {
   		return false;
   	}
   }
-  public function data_surat_masuk()
-  {
-  	$data['surat_masuk'] = $this->md_Global->get_data_all('surat_masuk');
-  	$this->template->content->view('vw_data_surat_masuk', $data);
-  	$this->template->publish();
-  }
+  
 
 
   public function ipsum()
@@ -111,12 +130,6 @@ class Surat_masuk extends CI_Controller {
   	echo form_submit('submit','upload');
   	echo form_close();
   }
-
-  private function insert_file()
-  {
-
-  }
-
 
   public function lorem()
   {

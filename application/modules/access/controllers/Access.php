@@ -21,15 +21,15 @@ class Access extends CI_Controller {
 		$data['message'] = $this->session->flashdata('message');
 
 		$data['users'] = $this->md_users->get_users();
-			$this->template->javascript->add(base_url('assets/js/lihat_users.js'));
+			$this->template->js_add(base_url('assets/js/lihat_users.js'));
 
-		$this->template->content->view('vw_lihat_user', $data);
-		$this->template->publish();
+		$this->template->render('vw_lihat_user', $data);
+		
 	}
 
 	public function lihat_groups()
 	{
-		$this->template->publish();
+		
 	}
 
 	public function tambah_user()
@@ -74,15 +74,15 @@ class Access extends CI_Controller {
 		else {
 			$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 			$data['groups'] = $this->ion_auth->groups()->result();
-			$this->template->stylesheet->add(base_url('template/gentelella/').'vendors/iCheck/skins/flat/green.css');
-			$this->template->stylesheet->add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.css');
-			$this->template->javascript->add(base_url('template/gentelella/').'vendors/iCheck/icheck.min.js');
-			$this->template->javascript->add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.js');
-			$this->template->javascript->add(base_url('template/gentelella/').'vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js');
-			$this->template->javascript->add(base_url('template/gentelella/').'vendors/validator/validator.js');
+			$this->template->css_add(base_url('template/gentelella/').'vendors/iCheck/skins/flat/green.css');
+			$this->template->css_add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.css');
+			$this->template->js_add(base_url('template/gentelella/').'vendors/iCheck/icheck.min.js');
+			$this->template->js_add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.js');
+			$this->template->js_add(base_url('template/gentelella/').'vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js');
+			$this->template->js_add(base_url('template/gentelella/').'vendors/validator/validator.js');
 
-			$this->template->content->view('vw_tambah_user', $data);
-			$this->template->publish();
+			$this->template->render('vw_tambah_user', $data);
+			
 		}
 	}
 
@@ -194,14 +194,14 @@ class Access extends CI_Controller {
 		$data['groups'] = $groups;
 		$data['currentGroups'] = $currentGroups;
 
-		// $this->template->stylesheet->add(base_url('template/gentelella/').'vendors/iCheck/skins/flat/green.css');
-		// $this->template->stylesheet->add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.css');
-		// $this->template->javascript->add(base_url('template/gentelella/').'vendors/iCheck/icheck.min.js');
-		// $this->template->javascript->add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.js');
-		// $this->template->javascript->add(base_url('template/gentelella/').'vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js');
-		// $this->template->javascript->add(base_url('template/gentelella/').'vendors/validator/validator.js');
-		$this->template->content->view('vw_edit_user', $data);
-		$this->template->publish();
+		// $this->template->css_add(base_url('template/gentelella/').'vendors/iCheck/skins/flat/green.css');
+		// $this->template->css_add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.css');
+		// $this->template->js_add(base_url('template/gentelella/').'vendors/iCheck/icheck.min.js');
+		// $this->template->js_add(base_url('template/gentelella/').'vendors/switchery/dist/switchery.min.js');
+		// $this->template->js_add(base_url('template/gentelella/').'vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js');
+		// $this->template->js_add(base_url('template/gentelella/').'vendors/validator/validator.js');
+		$this->template->render('vw_edit_user', $data);
+		
 
 	}
 
