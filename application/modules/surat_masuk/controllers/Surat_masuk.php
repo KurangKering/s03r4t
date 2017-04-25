@@ -1,35 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Surat_masuk extends CI_Controller {
-
-	public function __construct()	
+	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('md_Global');
 		$this->load->model('md_Surat_masuk');
-
 		$this->template->css_add('template/gentelella/vendors/pnotify/dist/pnotify.css');
 		$this->template->css_add('template/gentelella/vendors/pnotify/dist/pnotify.buttons.css');
 		$this->template->css_add('template/gentelella/vendors/pnotify/dist/pnotify.nonblock.css');
-
 		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.js');
 		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.buttons.js');
 		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.nonblock.js');
+		$this->template->title('Surat Masuk');
 	}
-
 	public function index()
 	{
-		
 	}
-
 	public function lihat()
 	{
 		$data['surat_masuk'] = $this->md_Surat_masuk->select_surat_masuk();
 		$this->template->render('vw_data_surat_masuk', $data);
-
 	}
-
 	/**
 	 * [tambah description]
 	 * @return [type] [description]
@@ -37,25 +29,23 @@ class Surat_masuk extends CI_Controller {
 	public function tambah()
 	{
 		$this->form_validation->set_rules(
-			'no_lembar_disposisi', 
-			'Nomor Lembar Disposisi', 
-			'trim|is_unique[surat_masuk.no_lembar_disposisi]', 
+			'no_lembar_disposisi',
+			'Nomor Lembar Disposisi',
+			'trim|is_unique[surat_masuk.no_lembar_disposisi]',
 			array('is_unique' => 'No. Lembar Disposisi Yang Diinput telah terdaftar !' )
 			);
 		$this->form_validation->set_rules('file', '', 'callback_file_check');
 		if ($this->form_validation->run() == TRUE) {
-			
 			$file_path = '';
 			$this->load->helper(array('form', 'url'));
-			$config['upload_path'] ='./uploads/surat_masuk/';
+			$config['upload_path']   ='./uploads/surat_masuk/';
 			$config['allowed_types'] = 'pdf';
-			$config['max_size'] = 0;
-			$config['encrypt_name'] = true;
+			$config['max_size']      = 0;
+			$config['encrypt_name']  = true;
 			$this->load->library('upload');
 			$this->upload->initialize($config);
 			if ($this->upload->do_upload('file'))
 				$file_path = $this->upload->data()['file_name'];
-
 			$container = array(
 				'no_lembar_disposisi' => $this->input->post('no_lembar_disposisi'),
 				'tgl_masuk'           => date_converter($this->input->post('tanggal_masuk')),
@@ -69,38 +59,81 @@ class Surat_masuk extends CI_Controller {
 				'created_by'          => $this->input->post('no_lembar_disposisi'),
 				'created_on'          => time()
 				);
-
-
 			$res = $this->md_Global->insert_data('surat_masuk', $container);
 			if ($res) {
 				$this->session->set_flashdata('message', 'Berhasil entry surat Masuk');
-				redirect('surat_masuk/data_surat_masuk','refresh');
+				redirect('surat_masuk/lihat','refresh');
 			}
-
-			
 		} else {
-
-			$data['message'] = (validation_errors() ? validation_errors() : $this->session->flashdata('message'));
+			$data['message']          = (validation_errors() ? validation_errors() : $this->session->flashdata('message'));
 			$data['disposisi_tujuan'] = $this->md_Surat_masuk->select_disposisi_tujuan();
 			$this->template->render('vw_tambah_surat_masuk', $data);
-			
 		}
-		
 	}
-
-	public function ubah($id = null)
+	public function edit($id = null)
 	{
 		if ($id == null) {
 			show_404();
 		}
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$file_path = '';
+			$this->load->helper(array('form', 'url'));
+			$config['upload_path'] ='./uploads/surat_masuk/';
+			$config['allowed_types'] = 'pdf';
+			$config['max_size'] = 0;
+			$config['encrypt_name'] = true;
+			$this->load->library('upload');
+			$this->upload->initialize($config);
+			if ($this->upload->do_upload('file'))
+				$file_path = $this->upload->data()['file_name'];
+			$container = array(
+				'no_lembar_disposisi' => $this->input->post('no_lembar_disposisi'),
+				'tgl_masuk'           => date_converter($this->input->post('tanggal_masuk')),
+				'tujuan_id'           => $this->input->post('tujuan_id'),
+				'pengirim'            => $this->input->post('pengirim'),
+				'tujuan_text'         => $this->input->post('penerima'),
+				'perihal'             => $this->input->post('perihal'),
+				'disposisi_tujuan_id' => $this->input->post('disposisi_tujuan_id'),
+				'file'                => $file_path,
+				'catatan_tambahan'    => $this->input->post('catatan_tambahan'),
+				'modified_by'         => $this->ion_auth->user()->row_array()['username'],
+				'modified_on'         => time()
+				);
+			$res = $this->md_Global->update_data('surat_masuk', $container, array('id_surat_masuk' => $id));
+			if ($res) {
+				$this->session->set_flashdata('message', 'Berhasil merubah data surat Masuk');
+				redirect('surat_masuk/lihat','refresh');
+			}
+			else if ($this->db->error()['code'] == 1062) {
+				$this->session->set_flashdata('message', 'Duplikat Nomor Lembar Disposisi terdeteksi');
+				redirect('surat_masuk/edit/' . $id,'refresh');
+			}
+		} else {
+			$data['message'] = (validation_errors() ? validation_errors() : $this->session->flashdata('message'));
+			$surat_masuk = $this->md_Global->get_data_single('surat_masuk', array('id_surat_masuk' => $id));
+			$data['disposisi_tujuan'] = $this->md_Surat_masuk->select_disposisi_tujuan();
+			$data['surat_masuk'] = $surat_masuk;
+			$this->template->render('vw_edit_surat_masuk', $data);
+		}
 	}
-
 	public function hapus($id = null)
 	{
 		if ($id == null) {
-			# code...
-		}show_404();
+			show_404();
+		}
+		$result = $this->md_Global->delete_data('surat_masuk', array('id_surat_masuk' => $id));
+		if ($this->db->error()['code']) {
+			$this->session->set_flashdata('message', 'Gagal Menghapus data Penjualan');
+			redirect('surat_masuk/lihat');
+		}
+		else if ($result){
+			$this->session->set_flashdata('message', 'Berhasil menghapus data Penjualan');
+			redirect('surat_masuk/lihat');
+
+		}
 	}
+	
   /*
      * file value and type check during validation
      */
@@ -119,18 +152,13 @@ class Surat_masuk extends CI_Controller {
   		return false;
   	}
   }
-  
-
-
   public function ipsum()
   {
-
   	echo form_open_multipart('surat_masuk/lorem');
   	echo form_input(array('type' => 'file','name' => 'userfile'));
   	echo form_submit('submit','upload');
   	echo form_close();
   }
-
   public function lorem()
   {
       // load codeigniter helpers
@@ -148,7 +176,6 @@ class Surat_masuk extends CI_Controller {
   	if (!$this->upload->do_upload())
   	{
   		echo  $this->upload->display_errors();
-
   	}
   	else
   	{
@@ -156,8 +183,6 @@ class Surat_masuk extends CI_Controller {
              // print uploaded file data
   	}
   }
-
 }
-
 /* End of file Surat_masuk.php */
 /* Location: ./application/modules/surat_masuk/controllers/Surat_masuk.php */

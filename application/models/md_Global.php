@@ -23,7 +23,7 @@ public function __construct()
 		return array();
 	}
 
-	public function select_data($query)
+	public function get_data_query($query)
 	{
 		
 		$result = $this->db->query($query);
@@ -45,7 +45,7 @@ public function __construct()
 	{
 		$result = $this->db->get_where($table, $where);
 		if ($result->num_rows() > 0 ) {
-			return $result->row();
+			return $result->row_array();
 		}
 		return array();
 	}

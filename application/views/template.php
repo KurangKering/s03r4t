@@ -256,8 +256,13 @@ $full_name = $this->ion_auth->user()->row()->first_name;
     <!-- page content -->
     <div class="right_col" role="main">
       <div class="">
+          <div class="page-title">
+              <div class="title_left">
+                <h3><?php echo $title ?></h3>
+              </div>
         <?php echo $content; ?>
 
+      </div>
       </div>
     </div>
     <!-- /page content -->

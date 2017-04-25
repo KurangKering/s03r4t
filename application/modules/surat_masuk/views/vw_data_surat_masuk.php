@@ -40,22 +40,22 @@
               <th>Tujuan Disposisi</th>
               <th>File</th>
               <th>Status</th>
-              <th>Edit | Hapus</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($surat_masuk as $key => $value): ?>
               <tr>
                 <td><?php echo $value['no_lembar_disposisi'] ?></td>
-                <td><?php echo $value['tgl_masuk'] ?></td>
+                <td><?php echo date_converter($value['tgl_masuk']) ?></td>
                 <td><?php echo $value['tujuan_id'] ?></td>
                 <td><?php echo $value['pengirim'] ?></td>
                 <td><?php echo $value['tujuan_text'] ?></td>
                 <td><?php echo $value['perihal'] ?></td>
-                <td><?php echo $value['disposisi_tujuan_id'] ?></td>
+                <td><?php echo $value['nama'] ?></td>
                 <td><?php echo $value['file'] ?></td>
                 <td><?php echo $value['disposisi_terakhir_text'] ?></td>
-                <td>Edit | Hapus</td>
+                <td><a href="<?php echo base_url('surat_masuk/edit/') . $value['id_surat_masuk'] ?>" class="btn btn-round btn-warning btn-xs">Edit</a><button type="button" class="btn btn-round btn-danger btn-xs" data-href="<?php echo base_url('surat_masuk/hapus/'.$value['id_surat_masuk']); ?>"  data-toggle="modal" data-target="#confirm-delete-penjualan">Hapus</button></td>
               </tr>
             <?php endforeach ?>
           </tbody>
@@ -93,14 +93,35 @@
   </div>
 </div>
 
+<div class="modal fade bs-example-modal-sm"  id="confirm-delete-penjualan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Yakin Ingin Menghapus Data Ini ? </h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <a class="btn btn-outline btn-ok">Delete</a>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 <script>
+
   $(function() {
-    new PNotify({
-      title: 'Regular Success',
-      text: 'That thing that you were trying to do worked!',
-      type: 'success',
-      styling: 'bootstrap3'
+    $('#confirm-delete-penjualan').on('show.bs.modal', function(e) {
+      $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
   });
-  
+</script>
+});
 </script>

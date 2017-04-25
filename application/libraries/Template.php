@@ -14,6 +14,7 @@ class template
   private $_css = array();
   private $_data = array();
   private $_template = 'template';
+  private $_title = '';
   private $ci;
   function __construct()
   {
@@ -126,8 +127,13 @@ function _extract()
   $this->_data['css'] = $_css;
   $this->_data['js'] =  $_js;
 }
+function title($data)
+{
+  $this->_title = $data;
+}
 function _view($view,$data)
 {        
+  $this->_data['title'] = $this->_title;
   $this->_data['content'] = $this->ci->load->view($view,$data,TRUE);
 }
 function render($view,$data= array())
