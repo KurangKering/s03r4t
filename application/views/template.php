@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
-<?php 
-$full_name = $this->ion_auth->user()->row()->first_name;
-?>
+
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,8 +17,12 @@ $full_name = $this->ion_auth->user()->row()->first_name;
   <link href="<?php echo base_url('template/gentelella/') ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- NProgress -->
   <link href="<?php echo base_url('template/gentelella/') ?>vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- Icheck -->
   <link href="<?php echo base_url('template/gentelella/') ?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <!-- switchery -->
   <link href="<?php echo base_url('template/gentelella/') ?>vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+  <!-- dataTables -->
+  
 
   <!-- Custom Theme Style -->
   <link href="<?php echo base_url('template/gentelella/') ?>build/css/custom.min.css" rel="stylesheet">
@@ -61,8 +63,8 @@ $full_name = $this->ion_auth->user()->row()->first_name;
               <img src="<?php echo base_url('template/gentelella/production/') ?>images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-              <span>Welcome,</span>
-              <h2><?php echo $full_name ?></h2>
+              <span>Welcome, </span>
+              <h2><?php echo currentUser()['first_name']; ?></h2>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -82,11 +84,12 @@ $full_name = $this->ion_auth->user()->row()->first_name;
                     </ul> -->
                 </li>
               </ul>
+               
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-home"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
+                <li><a href="#"><i class="fa fa-home"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo base_url('surat_masuk/tambah') ?>">Tambah Surat Masuk</a></li>
-                    <li><a href="<?php echo base_url('surat_masuk/lihat') ?>">Data Surat Masuk</a></li>
+                    <li><a href="<?php echo base_url('surat_masuk') ?>">Data Surat Masuk</a></li>
                     <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Cari Surat Masuk</a></li>
                     
                   </ul>
@@ -95,9 +98,9 @@ $full_name = $this->ion_auth->user()->row()->first_name;
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Surat Keluar <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="<?php echo base_url('surat_keluar/kelola') ?>">Data Surat Keluar</a></li>
-                    <li><a href="<?php echo base_url('surat_keluar/kelola') ?>">Cari Surat Keluar</a></li>
-                    <li><a href="<?php echo base_url('surat_keluar/tambah') ?>">Buat Surat Keluar</a></li>
+                    <li><a href="<?php echo base_url('surat_keluar') ?>">Data Surat Keluar</a></li>
+                    <li><a href="<?php echo base_url('surat_keluar/tambah') ?>">Tambah Surat Keluar</a></li>
+                    <li><a href="<?php echo base_url('surat_keluar/cari') ?>">Cari Surat Keluar</a></li>
                     
                   </ul>
                 </li>
@@ -105,7 +108,7 @@ $full_name = $this->ion_auth->user()->row()->first_name;
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Disposisi <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Tampil Disposisi</a></li>
+                    <li><a href="<?php echo base_url('disposisi') ?>">Data Disposisi</a></li>
                     <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Cari Disposisi</a></li>
 
                   </ul>
@@ -115,10 +118,8 @@ $full_name = $this->ion_auth->user()->row()->first_name;
                 
                <li><a><i class="fa fa-home"></i> Arsip <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Arsip Surat Masuk</a></li>
-                  <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Arsip Surat Keluar</a></li>
-                  <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Buat Arsip</a></li>
-                  <li><a href="<?php echo base_url('surat_masuk/kelola') ?>">Lokasi Penyimpanan</a></li>
+                  <li><a href="<?php echo base_url('arsip') ?>">Data Arsip</a></li>
+                  <li><a href="<?php echo base_url('arsip/tambah') ?>">Buat Arsip</a></li>
                   
                 </ul>
               </li>
@@ -167,7 +168,7 @@ $full_name = $this->ion_auth->user()->row()->first_name;
           <ul class="nav navbar-nav navbar-right">
             <li class="">
               <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <img src="<?php echo base_url('template/gentelella/production/') ?>images/img.jpg" alt=""><?php echo $full_name ?>
+                <img src="<?php echo base_url('template/gentelella/production/') ?>images/img.jpg" alt="">
                 <span class=" fa fa-angle-down"></span>
               </a>
               <ul class="dropdown-menu dropdown-usermenu pull-right">

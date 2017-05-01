@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'session', 'ion_auth', 'form_validation', 'template');
+$autoload['libraries'] = array('database', 'session', 'ion_auth', 'form_validation', 'template', 'datatables');
 
 /*
 | -------------------------------------------------------------------
@@ -103,7 +103,7 @@ $autoload['helper'] = array('url', 'language', 'file', 's03r4t');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('s03r4t');
 
 /*
 | -------------------------------------------------------------------

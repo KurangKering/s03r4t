@@ -19,3 +19,15 @@ if ( ! function_exists('date_converter'))
 		return $date;
 	}
 }
+
+
+if ( ! function_exists('currentUser'))
+{
+
+	function currentUser()
+	{
+		$CI =& get_instance();
+		$CI->load->library('ion_auth');
+		return $CI->ion_auth->user()->row_array();
+	}
+}

@@ -28,7 +28,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <table class="table table-striped">
+        <table id="tbl_masuk" class="table table-striped">
           <thead>
             <tr>
               <th>No. Diposisi</th>
@@ -121,7 +121,11 @@
     $('#confirm-delete-penjualan').on('show.bs.modal', function(e) {
       $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
+
+    $('#tbl_masuk').dataTable({
+      "bProcessing": true,
+      "bServerSide": true,
+    });
   });
-</script>
-});
+
 </script>

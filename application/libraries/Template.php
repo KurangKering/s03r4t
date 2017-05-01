@@ -16,6 +16,8 @@ class template
   private $_template = 'template';
   private $_title = '';
   private $ci;
+  private $_content = '';
+
   function __construct()
   {
     $this->ci = & get_instance();

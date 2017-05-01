@@ -1,3 +1,4 @@
 <?php 
-echo 'Selamat Datang ' .  $user . ' dengan group ' . $group;
- ?>
+echo 'Selamat Datang ' .  $user . ' dengan group ' ; 
+var_dump($group);
+?>
