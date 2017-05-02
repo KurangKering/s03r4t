@@ -21,7 +21,7 @@ class Access extends MY_Controller {
 		$data['message'] = $this->session->flashdata('message');
 
 		$data['users'] = $this->md_users->get_users();
-			$this->template->js_add(base_url('assets/js/lihat_users.js'));
+		$this->template->js_add(base_url('assets/js/lihat_users.js'));
 
 		$this->template->render('vw_lihat_user', $data);
 		
@@ -205,7 +205,10 @@ class Access extends MY_Controller {
 
 	}
 
-
+	public function edit_profile()
+	{
+		$this->template->render('vw_edit_user');
+	}
 	public function hapus_user($id)
 	{
 		

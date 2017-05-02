@@ -57,6 +57,35 @@ class Disposisi extends MY_Controller {
 		$this->template->render('vw_disposisi_2', $data);
 	}
 
+
+	public function ajax_lihat_belum()
+	{
+
+
+		$ketua_wakil = array(10);
+		$panitera_sekretaris = array(30, 40);
+		$kabag = array(50, 60);
+		$status_id = 1;
+
+		if ($this->ion_auth->in_group($ketua_wakil))
+		{
+			$status_id = '1';
+		}
+		else if ($this->ion_auth->in_group($panitera_sekretaris)) 
+		{
+			$status_id = '2';
+		}
+		else if ($this->ion_auth->in_group($kabag)) 
+		{
+			$status_id = '3';
+		}
+		else {
+			$status_id = '0';
+		}
+		$var = $this->md_disposisi->json_select_telah($status_id);
+		echo $var;
+		
+	}
 	public function ajax_lihat_telah()
 	{
 
