@@ -18,6 +18,19 @@ class Multi_menu {
 	 * 
 	 * @var string
 	 */
+	
+	/*
+	*additional variable added by Ilham Rahmadhani
+	* 
+	 */
+	
+	private $menu_published = 'published';
+
+
+	/*
+	original code start from here
+	 */
+
 	private $nav_tag_open             = '<ul>';
 
 	/**
@@ -298,7 +311,7 @@ class Multi_menu {
 	public function render($config = array(), $divided_items_list = array(), $divider = '')
 	{
 		$html  = "";
-
+		$hh 	= "";
 		if ( is_array($config) ) {
 			$this->initialize($config);	
 		}
@@ -312,10 +325,15 @@ class Multi_menu {
 
 			$this->set_divided_items($divided_items_list, $divider);
 
-			$this->render_item_baru($items, $html);
+			foreach ($items as $key => $value) {
+				$this->render_item_baru(array($value), $html);
+				$hh .= $html;
+				unset($html);
+			}
+
 		}
 
-		return $html;
+		return  $hh;
 	} 
 
     /**
@@ -374,14 +392,10 @@ class Multi_menu {
      * @param  string &$html  html menu
      * @return void         
      */
-    private function render_icak($items, &$html = '')
-    {
-    	foreach ($items as $key => $value) {
-    	# code...
-    	}
-    }
+
     private function render_item_baru($items, &$html = '')
     {
+    	
     	if ( empty($html) ) 
     	{
     		$nav_tag_opened = true;
@@ -393,11 +407,17 @@ class Multi_menu {
     		}
     	}		
     	else {
+    		
     		$html .= PHP_EOL . $this->children_tag_open . PHP_EOL; 
     	}		
 
     	foreach ($items as $item)
     	{
+    		//next loop 
+    		if ($item[$this->menu_published] == 1) {
+    			continue;
+    		}
+
 	        // menu label
     		if ( isset($item[$this->menu_label], $item[$this->menu_key]) ) 
     		{
@@ -460,6 +480,7 @@ class Multi_menu {
 
     			if ( $has_children ) 
     			{	        	
+
     				$this->render_item($item['children'], $html);
 
     				if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_close != '' ) {

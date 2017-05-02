@@ -30,20 +30,21 @@
       <div class="animate form login_form">
         <section class="login_content">
           <form method="post" action="<?php echo base_url('auth/login'); ?>">
-            <h1>Login Form</h1>
+            <h1>SISTEM INFORMASI PENYURATAN</h1>
             <div>
               <?php echo form_input($identity);?>
             </div>
             <div>
               <?php echo form_input($password);?>
             </div>
-            <div>
+            <!-- <div>
               <?php echo lang('login_remember_label', 'remember');?>
               <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-            </div>
+            </div> -->
             <div>
               <button type="submit" class="btn btn-default submit" >Log in</button>
-              <a class="reset_pass" href="#">Lost your password?</a>
+              <br>
+              <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
             </div>
 
             <div class="clearfix"></div>
@@ -58,7 +59,7 @@
 
               <div>
                 <h1><i class="fa fa-paw"></i> SIM SURAT</h1>
-                <p>©2016 All Rights Reserved. Kecoak Bunting Babi Ngepet Tukang Kebun</p>
+                <p>©2016 All Rights Reserved. <br>Kecoak Bunting Babi Ngepet Tukang Kebun</p>
               </div>
             </div>
           </form>

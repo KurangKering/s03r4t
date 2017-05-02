@@ -15,32 +15,32 @@ class Disposisi extends MY_Controller {
 		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.buttons.js');
 		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.nonblock.js');
 		//dataTables css
-		$this->template->css_add('assets/dataTables/media/css/jquery.dataTables.min.css');
-		$this->template->css_add('assets/dataTables/media/css/dataTables.bootstrap.min.css');
+		$this->template->css_add('assets/plugins/dataTables/media/css/jquery.dataTables.min.css');
+		$this->template->css_add('assets/plugins/dataTables/media/css/dataTables.bootstrap.min.css');
 
 		//smartWizard css
-		$this->template->css_add('assets/SmartWizard/dist/css/smart_wizard.min.css');
-		$this->template->css_add('assets/SmartWizard/dist/css/smart_wizard_theme_arrows.css');
+		$this->template->css_add('assets/plugins/SmartWizard/dist/css/smart_wizard.min.css');
+		$this->template->css_add('assets/plugins/SmartWizard/dist/css/smart_wizard_theme_arrows.css');
 		
 		//smartWizard js
-		$this->template->js_add('assets/SmartWizard/dist/js/jquery.smartWizard.min.js');
+		$this->template->js_add('assets/plugins/SmartWizard/dist/js/jquery.smartWizard.min.js');
 		
 		// dataTables js
-		$this->template->js_add('assets/dataTables/media/js/jquery.dataTables.min.js');
-		$this->template->js_add('assets/dataTables/media/js/dataTables.bootstrap.min.js');			
+		$this->template->js_add('assets/plugins/dataTables/media/js/jquery.dataTables.min.js');
+		$this->template->js_add('assets/plugins/dataTables/media/js/dataTables.bootstrap.min.js');			
 		$this->template->title('Disposisi');
 	}
 	public function index()
 	{
 
 		
-		$this->template->render('vw_lihat_disposisi');
+		$this->template->render('vw_pane_disposisi');
 	}
 
 
 	public function tahap_satu($id = null)
 	{
-	
+
 
 		!intval($id) ? show_404() : '';
 		$data['disposisi_tujuan'] = $this->md_Global->get_data_all('ref_eselon');
@@ -55,6 +55,35 @@ class Disposisi extends MY_Controller {
 		$data['disposisi_tujuan'] = $this->md_Global->get_data_all('ref_eselon');
 		$data['surat_masuk'] = $this->md_Global->get_data_single('surat_masuk', array('id_surat_masuk' => $id));
 		$this->template->render('vw_disposisi_2', $data);
+	}
+
+	public function ajax_lihat_telah()
+	{
+
+
+		$ketua_wakil = array(10);
+		$panitera_sekretaris = array(30, 40);
+		$kabag = array(50, 60);
+		$status_id = 1;
+
+		if ($this->ion_auth->in_group($ketua_wakil))
+		{
+			$status_id = '1';
+		}
+		else if ($this->ion_auth->in_group($panitera_sekretaris)) 
+		{
+			$status_id = '2';
+		}
+		else if ($this->ion_auth->in_group($kabag)) 
+		{
+			$status_id = '3';
+		}
+		else {
+			$status_id = '0';
+		}
+		$var = $this->md_disposisi->json_select_telah($status_id);
+		echo $var;
+		
 	}
 	public function ajax_lihat()
 	{	

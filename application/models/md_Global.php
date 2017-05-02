@@ -61,6 +61,12 @@ public function __construct()
 		$result = $this->db->delete($table, $where);
 		return $result;
 	}
+
+
+	public function get_menu()
+	{
+		return $this->db->get('sys_menus')->result_array();
+	}
 	
 }
 

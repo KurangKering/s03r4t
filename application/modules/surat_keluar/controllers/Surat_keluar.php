@@ -15,11 +15,11 @@ class Surat_keluar extends MY_Controller {
 		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.buttons.js');
 		$this->template->js_add('template/gentelella/vendors/pnotify/dist/pnotify.nonblock.js');
 		//dataTables css
-		$this->template->css_add('assets/dataTables/media/css/jquery.dataTables.min.css');
-		$this->template->css_add('assets/dataTables/media/css/dataTables.bootstrap.min.css');
+		$this->template->css_add('assets/plugins/dataTables/media/css/jquery.dataTables.min.css');
+		$this->template->css_add('assets/plugins/dataTables/media/css/dataTables.bootstrap.min.css');
 		// dataTables js
-		$this->template->js_add('assets/dataTables/media/js/jquery.dataTables.min.js');
-		$this->template->js_add('assets/dataTables/media/js/dataTables.bootstrap.min.js');			
+		$this->template->js_add('assets/plugins/dataTables/media/js/jquery.dataTables.min.js');
+		$this->template->js_add('assets/plugins/dataTables/media/js/dataTables.bootstrap.min.js');			
 		$this->template->title('Surat Keluar');
 	}
 	

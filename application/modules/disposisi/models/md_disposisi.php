@@ -64,6 +64,27 @@ class Md_disposisi extends CI_Model {
 		return array();
 	} 
 
+	public function json_select_telah()
+	{
+		$this->datatables->select(
+			'id_surat_masuk, 
+			no_lembar_disposisi, 
+			DATE_FORMAT(tgl_masuk, "%d/%m/%Y") as tgl_masuk, 
+			pengirim, 
+			perihal, 
+			tujuan_text, 
+			ref_tahapan_proses.nama as status_nama'
+			)
+		->from('surat_masuk')
+		->join(
+			'ref_tahapan_proses', 
+			'surat_masuk.status_id = ref_tahapan_proses.id ')
+		->add_column('nomor_urut', '0')
+		->add_column('view', 
+			'<button class="btn btn-round btn-info btn-xs"  onClick="showDetails($1)" id="detail" data-tooltip="tooltip" data-placement="left" title="Lihat Detail">s</button> <button class="btn btn-round btn-warning btn-xs"  onClick="showDetails($1)" id="detail" data-tooltip="tooltip" data-placement="left" title="Lihat Detail">e</button> <button class="btn btn-round btn-danger btn-xs"  onClick="showDetails($1)" id="detail" data-tooltip="tooltip" data-placement="left" title="Lihat Detail">d</button>' ,	'id_surat_masuk');
+		return $this->datatables->generate();
+
+	}
 	public function json_select($status)
 	{
 		$query = '';

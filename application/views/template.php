@@ -30,19 +30,19 @@
 
 
 
-<!-- jQuery -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/nprogress/nprogress.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/switchery/dist/switchery.min.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-<script src="<?php echo base_url('template/gentelella/') ?>vendors/validator/validator.js"></script>
-<?php echo $js; ?>
+  <!-- jQuery -->
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/nprogress/nprogress.js"></script>
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/iCheck/icheck.min.js"></script>
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/switchery/dist/switchery.min.js"></script>
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+  <script src="<?php echo base_url('template/gentelella/') ?>vendors/validator/validator.js"></script>
+  <?php echo $js; ?>
 
 </head>
 
@@ -60,7 +60,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="<?php echo base_url('template/gentelella/production/') ?>images/img.jpg" alt="..." class="img-circle profile_img">
+              <img src="<?php echo base_url('template/gentelella/production/') ?>images/user.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               <span>Welcome, </span>
@@ -75,13 +75,12 @@
           <!-- sidebar menu -->
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
+            <?php echo $this->multi_menu->render(); ?>
+            <!-- 
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-home"></i> Dashboard </a>
-                  <!--   <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-
-                    </ul> -->
+               
                 </li>
               </ul>
                
@@ -133,13 +132,13 @@
                 </ul>
               </li>
             </ul>
-          </div>
+          --></div>
 
         </div>
         <!-- /sidebar menu -->
 
         <!-- /menu footer buttons -->
-        <div class="sidebar-footer hidden-small">
+        <!-- <div class="sidebar-footer hidden-small">
           <a data-toggle="tooltip" data-placement="top" title="Settings">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
           </a>
@@ -152,7 +151,7 @@
           <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo base_url('logout'); ?>">
             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
           </a>
-        </div>
+        </div> -->
         <!-- /menu footer buttons -->
       </div>
     </div>
@@ -168,23 +167,24 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="">
               <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <img src="<?php echo base_url('template/gentelella/production/') ?>images/img.jpg" alt="">
+                <img src="<?php echo base_url('template/gentelella/production/') ?>images/user.png" alt="">
                 <span class=" fa fa-angle-down"></span>
               </a>
               <ul class="dropdown-menu dropdown-usermenu pull-right">
-                <li><a href="javascript:;"> Profile</a></li>
+                <!-- <li><a href="javascript:;"> Profile</a></li>
                 <li>
                   <a href="javascript:;">
                     <span class="badge bg-red pull-right">50%</span>
                     <span>Settings</span>
                   </a>
                 </li>
-                <li><a href="javascript:;">Help</a></li>
-                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                <li><a href="javascript:;">Help</a></li> -->
+                <li><a href="<?php echo base_url('profile') ?>"><i class="fa fa-user pull-right"></i> Profile</a></li>
+                <li><a href="<?php echo base_url('logout') ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
               </ul>
             </li>
 
-            <li role="presentation" class="dropdown">
+            <!-- <li role="presentation" class="dropdown">
               <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-envelope-o"></i>
                 <span class="badge bg-green">6</span>
@@ -247,7 +247,7 @@
                   </div>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </nav>
       </div>
@@ -257,13 +257,13 @@
     <!-- page content -->
     <div class="right_col" role="main">
       <div class="">
-          <div class="page-title">
-              <div class="title_left">
-                <h3><?php echo $title ?></h3>
-              </div>
-        <?php echo $content; ?>
+        <div class="page-title">
+          <div class="title_left">
+            <h3><?php echo $title ?></h3>
+          </div>
+          <?php echo $content; ?>
 
-      </div>
+        </div>
       </div>
     </div>
     <!-- /page content -->
@@ -271,7 +271,7 @@
     <!-- footer content -->
     <footer>
       <div class="pull-right">
-      Sistem Informasi Persuratan Pengadilan Tinggi Pekanbaru
+        Sistem Informasi Persuratan Pengadilan Tinggi Pekanbaru
       </div>
       <div class="clearfix"></div>
     </footer>
